@@ -7,17 +7,22 @@
 </head>
 <body>
   <script>
+
+    //  THERE ARE THREE WAYS TO WRITE VARIABLE 
+    //1. USING LET 
+    // YOU CAN USE LET IF YOU KNOW YOU WILL WANTS TO CHANGE THE VARIABLE LATER ON
+    
     let variable1 = 3;
     console.log(variable1);
 
-    let calculation = 2 + 2;
+    const calculation = 2 + 2;
     console.log(calculation);
     console.log(calculation + 2);
 
-    let result = calculation + 2;
+    const result = calculation + 2;
     console.log(result);
 
-    let message = 'Hello';
+    const message = 'Hello';
     console.log(message); console.log(';');
 
     variable1 = 5;
@@ -25,6 +30,21 @@
 
     variable1 = variable1 + 1;
     console.log(variable1);
-  </script>
+
+    //2. USING CONST TO WRITE VARIABLES
+    // we cant change a variable in const
+    //WE USE CONST BY DEFAULT
+    
+    const variable2 = 3;
+
+    //3. Another way to name variable is using var
+    //IT CAN BE CHANGE LATER
+    var variable3 = 3;
+
+
+    // using TYPEOF
+    //TYPEOF IS USED TO TELL US WHAT TYPE OF VALUE IS USED INSIDE A VARIABLE
+    console.log(typeof variable2);
+</script>
 </body>
 </html>
