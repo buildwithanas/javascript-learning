@@ -31,20 +31,11 @@
       if (computerMove === 'scissors'){
         result = 'You win.';
       } else if (computerMove === 'paper') 
-    }
-
-    if(playerMove === computerMove) {
-      result = 'Tie.'
-    } else if (
-      (playerMove === 'rock'    && computerMove === 'scissors') ||
-      (playerMove === 'paper'    && computerMove === 'rock') ||
-      (playerMove === 'scissors' && computerMove === 'paper') 
-    ) {
-      result = 'You win.';
-    } else {
       result = 'You lose.';
+      } else if (computerMove === 'rock')
+      result = 'Tie.';
     }
-
+    
     alert(`You picked ${playerMove}. computer picked ${computerMove}. ${result}`);
   }
   </script>
