@@ -27,6 +27,12 @@
 
     let result = '';
 
+    if (playerMove === 'rock') {
+      if (computerMove === 'scissors'){
+        result = 'You win.';
+      } else if (computerMove === 'paper') 
+    }
+
     if(playerMove === computerMove) {
       result = 'Tie.'
     } else if (
