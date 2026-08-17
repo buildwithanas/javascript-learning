@@ -27,15 +27,16 @@
 
     let result = '';
 
-    if (playerMove === 'rock') {
-      if (computerMove === 'scissors') {
-        result = 'You win.';
+    if (playerMove === 'scissors') {
+      if (computerMove === 'rock') {
+        result = 'You lose.';
       } else if (computerMove === 'paper') { 
-      result = 'You lose.';
-      } else if (computerMove === 'rock'){
+      result = 'You win.';
+      } else if (computerMove === 'scissors') {
       result = 'Tie.';
       }
     }
+  }
     
     alert(`You picked ${playerMove}. computer picked ${computerMove}. ${result}`);
   
