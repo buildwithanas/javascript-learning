@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Filter · Places</title>
+    <!-- Font Awesome 6 (free) for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Global reset & base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+            background: #f8f9fa;
+            color: #1e1e2a;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* ----- HEADER (based on 7-index.html style) ----- */
+        header {
+            background: white;
+            padding: 1rem 2rem;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+            color: #2c3e50;
+        }
+        .logo i {
+            color: #FF5A5F;
+            margin-right: 6px;
+        }
+
+        .header-tagline {
+            color: #5a6a7a;
+            font-size: 0.95rem;
+            background: #f0f2f5;
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+        }
+
+        /* ----- FILTER BOX (dropdown + search) ----- */
+        .filter-box {
+            background: white;
+            padding: 1.2rem 2rem;
+            border-bottom: 1px solid #e9ecef;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 1.2rem 2rem;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+        }
+
+        .filter-group {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-group label {
+            font-weight: 500;
+            color: #2c3e50;
+            font-size: 0.95rem;
+        }
+
+        .filter-group select {
+            padding: 0.5rem 2rem 0.5rem 1rem;
+            border: 1px solid #ced4da;
+            border-radius: 30px;
+            background: white url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%235a6a7a' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat right 1rem center;
+            background-size: 12px;
+            appearance: none;
+            font-size: 0.95rem;
+            min-width: 170px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .filter-group select:focus {
+            outline: 2px solid #FF5A5F;
+            outline-offset: 2px;
+            border-color: #FF5A5F;
+        }
+
+        .search-btn {
+            background: #FF5A5F;
+            border: none;
+            color: white;
+            padding: 0.5rem 1.8rem;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: 0.15s;
+            box-shadow: 0 2px 6px rgba(255, 90, 95, 0.2);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .search-btn:hover {
+            background: #e04a4f;
+            transform: scale(0.98);
+        }
+
+        .result-count {
+            margin-left: auto;
+            font-size: 0.9rem;
+            color: #5a6a7a;
+            background: #f1f3f5;
+            padding: 0.2rem 1.2rem;
+            border-radius: 30px;
+        }
+
+        /* ----- MAIN CONTENT (places) ----- */
+        .container {
+            flex: 1;
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+            width: 100%;
+        }
+
+        .places-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 2rem;
+        }
+
+        /* ----- PLACE ARTICLE (the card) ----- */
+        .place {
+            background: white;
+            border-radius: 18px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+            padding: 1.5rem 1.5rem 1.8rem;
+            transition: 0.2s;
+            border: 1px solid #edf0f5;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .place:hover {
+            box-shadow: 0 12px 28px rgba(0,0,0,0.07);
+            border-color: #dde1e8;
+        }
+
+        /* header row: name + price_by_night */
+        .place-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.5rem;
+        }
+
+        .place-name {
+            font-size: 1.7rem;
+            font-weight: 600;
+            color: #1e2a36;
+            letter-spacing: -0.3px;
+        }
+
+        /* Price by night — div with class "price_by_night" */
+        .price_by_night {
+            color: #FF5A5F;
+            border: 4px solid #FF5A5F;
+            border-radius: 4px;          /* rounded corners */
+            min-width: 60px;
+            height: 60px;
+            font-size: 30px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 6px;
+            background: white;
+            box-sizing: border-box;
+            line-height: 1;
+            flex-shrink: 0;
+            margin-left: 1rem;
+            /* align top right with space: done via flex + margin */
+        }
+
+        /* ----- INFORMATION section (div.information) ----- */
+        .information {
+            height: 80px;
+            border-top: 1px solid #DDDDDD;
+            border-bottom: 1px solid #DDDDDD;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            margin: 1.2rem 0 1rem 0;
+            padding: 0.2rem 0;
+        }
+
+        .info-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100px;
+            text-align: center;
+            color: #2c3e50;
+            font-size: 0.8rem;
+            font-weight: 500;
+            gap: 4px;
+        }
+
+        .info-item i {
+            font-size: 1.5rem;
+            color: #4a5a6a;
+            margin-bottom: 2px;
+        }
+
+        .info-item span {
+            font-size: 0.75rem;
+            letter-spacing: 0.2px;
+            color: #3d4e5e;
+        }
+
+        /* ----- USER section ----- */
+        .user {
+            font-size: 0.95rem;
+            margin: 0.6rem 0 0.4rem 0;
+            color: #1e2a36;
+        }
+
+        .user strong {
+            font-weight: 700;
+            color: #0f1a24;
+        }
+
+        /* ----- DESCRIPTION ----- */
+        .description {
+            margin-top: 0.3rem;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: #2c3e50;
+            background: #fafbfc;
+            padding: 0.8rem 1rem;
+            border-radius: 12px;
+            border-left: 3px solid #FF5A5F;
+        }
+
+        /* ----- FOOTER (based on 7-index.html) ----- */
+        footer {
+            background: white;
+            border-top: 1px solid #ddd;
+            padding: 1.2rem 2rem;
+            text-align: center;
+            color: #5a6a7a;
+            font-size: 0.9rem;
+            margin-top: 2rem;
+        }
+
+        footer i {
+            color: #FF5A5F;
+            margin: 0 4px;
+        }
+
+        /* responsive */
+        @media (max-width: 600px) {
+            .filter-box {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .result-count {
+                margin-left: 0;
+                text-align: center;
+            }
+            .place-header {
+                flex-wrap: wrap;
+            }
+            .price_by_night {
+                margin-left: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="logo">
+            <i class="fas fa-map-pin"></i> travel<span style="font-weight:300;">·</span>hub
+        </div>
+        <div class="header-tagline">
+            <i class="fas fa-compass" style="margin-right:6px;"></i> discover your next stay
+        </div>
+    </header>
+
+    <!-- FILTER BOX (dropdown list + search) -->
+    <div class="filter-box">
+        <div class="filter-group">
+            <label for="cityFilter"><i class="fas fa-city"></i> City</label>
+            <select id="cityFilter">
+                <option value="all">All cities</option>
+                <option value="paris">Paris</option>
+                <option value="rome">Rome</option>
+                <option value="barcelona">Barcelona</option>
+                <option value="london">London</option>
+            </select>
+        </div>
+
+        <div class="filter-group">
+            <label for="guestFilter"><i class="fas fa-user-friends"></i> Guests</label>
+            <select id="guestFilter">
+                <option value="any">Any</option>
+                <option value="2">2 guests</option>
+                <option value="4">4 guests</option>
+                <option value="6">6+ guests</option>
+            </select>
+        </div>
+
+        <button class="search-btn" id="searchBtn"><i class="fas fa-search"></i> Search</button>
+        <span class="result-count" id="resultCount">2 places found</span>
+    </div>
+
+    <!-- MAIN CONTENT: result of search (places) -->
+    <main class="container">
+        <div class="places-grid" id="placesGrid">
+            <!-- Place 1: detailed article -->
+            <article class="place">
+                <div class="place-header">
+                    <span class="place-name">Cozy Loft</span>
+                    <!-- price_by_night div (same level as place name) -->
+                    <div class="price_by_night">$89</div>
+                </div>
+
+                <!-- information section (div.information) -->
+                <div class="information">
+                    <div class="info-item max_guest">
+                        <i class="fas fa-user"></i>
+                        <span>2 Guests</span>
+                    </div>
+                    <div class="info-item number_rooms">
+                        <i class="fas fa-bed"></i>
+                        <span>1 Bedroom</span>
+                    </div>
+                    <div class="info-item number_bathrooms">
+                        <i class="fas fa-bath"></i>
+                        <span>1 Bathroom</span>
+                    </div>
+                </div>
+
+                <!-- user section -->
+                <div class="user">
+                    <strong>Owner:</strong> Elena Ricci
+                </div>
+
+                <!-- description -->
+                <div class="description">
+                    <i class="fas fa-quote-left" style="color:#FF5A5F; margin-right:6px;"></i>
+                    Charming attic with exposed beams, skylight, and a private terrace. Steps from the main square.
+                </div>
+            </article>
+
+            <!-- Place 2: another detailed article -->
+            <article class="place">
+                <div class="place-header">
+                    <span class="place-name">Garden Suite</span>
+                    <div class="price_by_night">$145</div>
+                </div>
+
+                <div class="information">
+                    <div class="info-item max_guest">
+                        <i class="fas fa-user"></i>
+                        <span>4 Guests</span>
+                    </div>
+                    <div class="info-item number_rooms">
+                        <i class="fas fa-bed"></i>
+                        <span>2 Bedrooms</span>
+                    </div>
+                    <div class="info-item number_bathrooms">
+                        <i class="fas fa-bath"></i>
+                        <span>2 Bathrooms</span>
+                    </div>
+                </div>
+
+                <div class="user">
+                    <strong>Owner:</strong> Marcus & Clara
+                </div>
+
+                <div class="description">
+                    <i class="fas fa-quote-left" style="color:#FF5A5F; margin-right:6px;"></i>
+                    Bright garden-level apartment with private patio, hammock, and BBQ. Family-friendly.
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <i class="fas fa-heart"></i> travel·hub – search, stay, explore <i class="fas fa-map-marked-alt"></i>
+    </footer>
+
+    <!-- small interactive: filter demo (changes result count) -->
+    <script>
+        (function() {
+            const searchBtn = document.getElementById('searchBtn');
+            const resultCount = document.getElementById('resultCount');
+            const citySelect = document.getElementById('cityFilter');
+            const guestSelect = document.getElementById('guestFilter');
+            const placesGrid = document.getElementById('placesGrid');
+
+            // We'll keep two static place cards, but for demo we show a message.
+            // In a real app you would filter, but we simulate a "search" effect.
+            function updateResultMessage() {
+                const city = citySelect.options[citySelect.selectedIndex].text;
+                const guest = guestSelect.options[guestSelect.selectedIndex].text;
+                // Just for demo: show a dynamic message
+                resultCount.textContent = `Showing 2 places · ${city} · ${guest}`;
+            }
+
+            // attach event to search button
+            searchBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                updateResultMessage();
+                // small animation feedback
+                searchBtn.style.transform = 'scale(0.95)';
+                setTimeout(() => { searchBtn.style.transform = ''; }, 150);
+            });
+
+            // also update on dropdown change (optional)
+            citySelect.addEventListener('change', function() {
+                // we only update the text when search is clicked, but we can show a hint.
+                // we keep it simple: only update via search button.
+                // but we can still show a "preview" if you want: 
+                // we'll keep it clean: only on search click.
+            });
+
+            // set initial message
+            resultCount.textContent = '2 places found';
+
+            // extra: demo that the place cards are static, but we could hide/show.
+            // but the requirement: "displays a header, a footer, a filter box (dropdown list) and the result of the search."
+            // We have all. For extra interactivity, we add a "filter" that toggles visibility of the second card? 
+            // Not required, but we can add a tiny easter egg: search will "reorder" text.
+            // Actually we keep it simple: The result of the search is displayed. 
+            // But to make it more interesting, we add a "reset" style effect.
+            console.log('Filter box with dropdown + search works!');
+        })();
+    </script>
+</body>
+</html>
