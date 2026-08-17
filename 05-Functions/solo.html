@@ -39,7 +39,13 @@
       result = 'Tie.';
       }
     } else if (playerMove === 'rock') {
-      if ()
+      if (computerMove === 'paper') {
+        result = 'You Lose.';
+      } else if (computerMove === 'scissors') {
+        result = 'You win.';
+      } else if (computerMove === 'rock') {
+        result = 'Tie.';
+      }
     }
   }
     
