@@ -20,15 +20,26 @@
       computerMove = 'rock';
     } else if (randomNumber < 2 / 3) {
       computerMove = 'paper';
-    } else () {
+    } else {
       computerMove = 'scissors'
     }
 
 
     let result = '';
-    if(playerMove === computerMove){
+
+    if(playerMove === computerMove) {
       result = 'Tie.'
+    } else if (
+      (playerMove === 'rock'    && computerMove === 'scissors') ||
+      (playerMove === 'paper'    && computerMove === 'rock') ||
+      (playerMove === 'scissors' && computerMove === 'paper') 
+    ) {
+      result = 'You win.';
+    } else {
+      result = 'You lose.';
     }
+
+    alert(`You picked ${playerMove}. computer picked ${computerMove}. ${result}`);
   }
   </script>
 
