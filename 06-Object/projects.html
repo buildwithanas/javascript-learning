@@ -18,14 +18,8 @@
   
 
   <script>
-    const score = {
-      wins: 0,
-      loses: 0,
-      ties: 0,
-    };
+    const score = JSON.parse(localStorage.getItem('score'));
 
-    localStorage.getItem('message');
-    console.log(localStorage.getItem('message'));
 
 
   function pickComputerMove() {
@@ -83,7 +77,8 @@
       score.ties += 1;
     }
 
-    localStorage.setItem('message', 'hello');
+    localStorage.setItem('score', JSON.stringify(score));
+    console.log(localStorage.setItem('score', JSON.stringify(score)));
 
     alert(`You picked ${playerMove}. computer picked ${computerMove}. ${result}
 Wins: ${score.wins}, Loses: ${score.loses}, Ties: ${score.ties}`);
