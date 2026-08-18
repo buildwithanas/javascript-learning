@@ -23,6 +23,11 @@
       loses: 0,
       ties: 0,
     };
+
+    localStorage.getItem('message');
+    console.log(localStorage.getItem('message'));
+
+
   function pickComputerMove() {
     const randomNumber = Math.random();
     let computerMove= '';
@@ -77,6 +82,9 @@
     } else if (result === 'Tie.') {
       score.ties += 1;
     }
+
+    localStorage.setItem('message', 'hello');
+
     alert(`You picked ${playerMove}. computer picked ${computerMove}. ${result}
 Wins: ${score.wins}, Loses: ${score.loses}, Ties: ${score.ties}`);
   }
