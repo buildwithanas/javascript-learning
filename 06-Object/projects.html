@@ -10,7 +10,11 @@
   <button onclick="playGame('rock')">Rock</button>
   <button onclick="playGame('paper')">paper</button>
   <button onclick="playGame('scissors')">Scissors</button>
-  <button onclick="Reset('Reset')">Reset</button>
+  <button onclick="
+    score.wins = 0;
+    score.loses = 0;
+    score.ties = 0;
+  ">Reset</button>
   
 
   <script>
@@ -73,7 +77,8 @@
     } else if (result === 'Tie.') {
       score.ties += 1;
     }
-    alert(`You picked ${playerMove}. computer picked ${computerMove}. ${result}`);
+    alert(`You picked ${playerMove}. computer picked ${computerMove}. ${result}
+Wins: ${score.wins}, Loses: ${score.loses}, Ties: ${score.ties}`);
   }
   
   </script>
