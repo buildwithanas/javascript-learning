@@ -19,15 +19,19 @@
   
 
   <script>
-    const score = JSON.parse(localStorage.getItem('score'));
-
+    const score = JSON.parse(localStorage.getItem('score')) || {
+      wins: 0,
+      loses: 0,
+      ties: 0,
+    };
+/*
     if (!score) {
       score = {
         wins: 0,
         loses: 0,
         ties: 0,
       }
-    }
+    } */
 
 
 
