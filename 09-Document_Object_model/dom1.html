@@ -7,9 +7,24 @@
 </head>
 <body>
   <button>Hello</button>
+  <button class="js-button">Second button</button>
   <script>
+
     console.log(document.querySelector('button').innerHTML);
-    document.querySelector('button').innerHTML = 'Changed';
+    document.querySelector('button')
+      .innerHTML = 'Changed';
+
+
+
+    const buttonElement = document.querySelector('.js-button');
+    console.log(buttonElement);
+      document.querySelector('.js-button')
+        .innerHTML = 'not yet';
+
+
+
+
+
   </script>
   
 </body>
