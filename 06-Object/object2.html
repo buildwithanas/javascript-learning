@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Objects are references</title>
+</head>
+<body>
+  <script>
+    const object1 = {
+      message: 'hello'
+    }
+    const object2 = object1;
+
+    object1.message = 'Good job'
+    console.log(object1);
+    console.log(object2);
+
+    const object3 = {
+      message: 'Good Job!'
+    }
+
+  </script>
+</body>
+</html>
