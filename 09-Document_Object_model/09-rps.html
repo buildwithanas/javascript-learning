@@ -104,7 +104,10 @@
 
     localStorage.setItem('score', JSON.stringify(score));
    // console.log(localStorage.setItem('score', JSON.stringify(score)));
+   
     updateScoreElement();
+
+    document.querySelector('.js-result').innerHTML = result;
 
     alert(`You picked ${playerMove}. computer picked ${computerMove}. ${result}
 Wins: ${score.wins}, Loses: ${score.loses}, Ties: ${score.ties}`);
@@ -115,7 +118,6 @@ Wins: ${score.wins}, Loses: ${score.loses}, Ties: ${score.ties}`);
       document.querySelector('.js-score')
         .innerHTML = `Wins: ${score.wins}, Loses: ${score.loses}, Ties: ${score.ties}`;
     } 
-      document.querySelector('.js-result')
 
   
   
