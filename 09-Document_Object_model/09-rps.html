@@ -13,14 +13,16 @@
   <button onclick="playGame('paper')">paper</button>
   <button onclick="playGame('scissors')">Scissors</button>
 
+  <p class="js-result"></p>
   <p class="js-score"></p>
+  <p class="js-moves"></p>
 
   <button onclick="
     score.wins = 0;
     score.loses = 0;
     score.ties = 0;
     localStorage.removeItem('score');
-  ">Reset</button>
+  ">Reset Score</button>
   
 
   <script>
