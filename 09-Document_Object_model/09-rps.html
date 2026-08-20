@@ -102,10 +102,17 @@
     }
 
     localStorage.setItem('score', JSON.stringify(score));
-    console.log(localStorage.setItem('score', JSON.stringify(score)));
+   // console.log(localStorage.setItem('score', JSON.stringify(score)));
+    
 
-    alert(`You picked ${playerMove}. computer picked ${computerMove}. ${result}
-Wins: ${score.wins}, Loses: ${score.loses}, Ties: ${score.ties}`);
+
+  function updateScoreElement() {
+      document.querySelector('.js-score')
+        .innerHTML = `Wins: ${score.wins}, Loses: ${score.loses}, Ties: ${score.ties}`;
+
+      alert(`You picked ${playerMove}. computer picked ${computerMove}. ${result}
+  Wins: ${score.wins}, Loses: ${score.loses}, Ties: ${score.ties}`);
+    }
   }
   
   </script>
