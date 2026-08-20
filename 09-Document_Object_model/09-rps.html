@@ -14,8 +14,8 @@
   <button onclick="playGame('scissors')">Scissors</button>
 
   <p class="js-result"></p>
-  <p class="js-score"></p>
   <p class="js-moves"></p>
+  <p class="js-score"></p>
 
   <button onclick="
     score.wins = 0;
@@ -108,6 +108,7 @@
     updateScoreElement();
 
     document.querySelector('.js-result').innerHTML = result;
+    document.querySelector('.js-moves').innerHTML = `You ${playerMove} - ${computerMove} Computer`;
 
     alert(`You picked ${playerMove}. computer picked ${computerMove}. ${result}
 Wins: ${score.wins}, Loses: ${score.loses}, Ties: ${score.ties}`);
