@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DOM Project</title>
 </head>
-<>
   <p>YouTube Subscribe Button</p>
 
   <button onclick="
@@ -22,13 +21,21 @@
 
   <p>Orders over $40 = FREE shipping.</p>
 
-  <input type="text" placeholder="cost of order">
-  <button>Calculate</button>
+  <input type="text" placeholder="cost of order" class="js-cost-input">
+  <button onclick="calculateTotal">Calculate</button>
+
+
   <script>
+
+    function calculateTotal() {
+      const inputElement = document.querySelector('.js-cost-input');
+      console.log(inputElement.value);
+    }
+    
     function subscribe() {
       const buttonElement = document.querySelector('.js-subscribe-button');
 
-      if(buttonElement.innerText === 'Subscribe'){
+      if(buttonElement.innerText === 'Subscribe') {
         buttonElement.innerHTML = 'Subsribed';
       } else {
         buttonElement.innerHTML = 'Subscribe';
