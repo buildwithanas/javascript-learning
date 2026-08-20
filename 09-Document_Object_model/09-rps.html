@@ -104,14 +104,11 @@
 
     localStorage.setItem('score', JSON.stringify(score));
    // console.log(localStorage.setItem('score', JSON.stringify(score)));
-   
+  
     updateScoreElement();
 
     document.querySelector('.js-result').innerHTML = result;
     document.querySelector('.js-moves').innerHTML = `You ${playerMove} - ${computerMove} Computer`;
-
-    alert(`You picked ${playerMove}. computer picked ${computerMove}. ${result}
-Wins: ${score.wins}, Loses: ${score.loses}, Ties: ${score.ties}`);
   }
 
 
