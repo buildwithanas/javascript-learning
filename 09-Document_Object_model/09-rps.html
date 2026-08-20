@@ -22,18 +22,18 @@
     score.loses = 0;
     score.ties = 0;
     localStorage.removeItem('score');
+    updateScoreElement();
   ">Reset Score</button>
   
 
   <script>
-    const score = JSON.parse(localStorage.getItem('score')) || {
+    let score = JSON.parse(localStorage.getItem('score')) || {
       wins: 0,
       loses: 0,
       ties: 0,
     };
 
-    document.querySelector('.js-score')
-      .innerHTML = `Wins: ${score.wins}, Loses: ${score.loses}, Ties: ${score.ties}`;
+    updateScoreElement();
 
 /*
     if (!score) {
@@ -101,19 +101,21 @@
       score.ties += 1;
     }
 
+
     localStorage.setItem('score', JSON.stringify(score));
    // console.log(localStorage.setItem('score', JSON.stringify(score)));
-    
+    updateScoreElement();
+
+    alert(`You picked ${playerMove}. computer picked ${computerMove}. ${result}
+Wins: ${score.wins}, Loses: ${score.loses}, Ties: ${score.ties}`);
+  }
 
 
   function updateScoreElement() {
       document.querySelector('.js-score')
         .innerHTML = `Wins: ${score.wins}, Loses: ${score.loses}, Ties: ${score.ties}`;
-
-      alert(`You picked ${playerMove}. computer picked ${computerMove}. ${result}
-  Wins: ${score.wins}, Loses: ${score.loses}, Ties: ${score.ties}`);
-    }
-  }
+    } 
+  
   
   </script>
 
