@@ -9,7 +9,35 @@
   body {
     background-color: white;
   }
-  .js-subs
+  .js-subscribe-button {
+    color: white;
+    background-color: black;
+    border-radius: 50px;
+    border: 0;
+    padding-top: 10px;
+    padding-left: 10px;
+    font-size: 12px;
+    font-weight: 630;
+    padding: 10px;
+    cursor: pointer;
+    margin-bottom: 30px;
+  }
+  .calc {
+    width: 90px;
+    height: 30px;
+    background-color: rgb(5, 160, 5);
+    color: white;
+    border: 0;
+  }
+  .js-cost-input {
+    width: 90px;
+    height: 25px;
+    border 1px solid: #FFFFF;
+  }
+  .is-subscribed {
+    background-color: rgb(240, 240, 240);
+    color: black;
+  }
 </style>
   <p>YouTube Subscribe Button</p>
 
@@ -32,7 +60,7 @@
   ">
   <button onclick="
   calculateTotal();
-  ">Calculate</button>
+  " class="calc">Calculate</button>
   <p class="js-total-cost"></p>
 
 
@@ -69,8 +97,10 @@
 
       if(buttonElement.innerText === 'Subscribe') {
         buttonElement.innerHTML = 'Subsribed';
+        buttonElement.classList.add('is-subscribed');
       } else {
         buttonElement.innerHTML = 'Subscribe';
+        buttonElement.classList.remove('is-subscribed')
       }
     }
   </script>
