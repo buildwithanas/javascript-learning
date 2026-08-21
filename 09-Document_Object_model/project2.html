@@ -7,10 +7,22 @@
 </head>
 <body>
   <button onclick="
-      click();
-    ">heads</button>
+    gameClick();
+    " class="js-coin">heads</button>
   <button onclick="
-  " class="js-coin">tails</button>
+    gameClick();
+    " class="js-coin">tails</button>
+
+  <script>
+    function gameClick() {
+      const inputElement = document.querySelector('.js-coin');
+        if(gameClick.innerText === 'heads') {
+          buttonElement.innerHTML = 'You chose: tails';
+        } else if (gameClick.innerText === 'tails') {
+          buttonElement.innerHTML = 'You chose: heads';
+        }
+    }
+  </script>
   
 </body>
 </html>
