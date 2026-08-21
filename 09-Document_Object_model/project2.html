@@ -17,10 +17,11 @@
     function gameClick() {
       const inputElement = document.querySelector('.js-coin');
         if(gameClick.innerText === 'heads') {
-          js-result = 'You chose: tails';
+          buttonElement.innerHTML = 'You chose: tails';
         } else if (gameClick.innerText === 'tails') {
-          js-result = 'You chose: heads';
+          buttonElement.innerHTML = 'You chose: heads';
         }
+        document.querySelector('.js-result').innerHTML;
     }
   </script>
   
