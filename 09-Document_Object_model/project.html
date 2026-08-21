@@ -23,6 +23,9 @@
 
   <input type="text" placeholder="cost of order" class="js-cost-input" onkeydown="
     console.log(event.key);
+    if (event.key === 'Enter') {
+    calculateTotal(); 
+    }
   ">
   <button onclick="
   calculateTotal();
