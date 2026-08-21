@@ -21,7 +21,9 @@
 
   <p>Orders over $40 = FREE shipping.</p>
 
-  <input type="text" placeholder="cost of order" class="js-cost-input">
+  <input type="text" placeholder="cost of order" class="js-cost-input" onkeydown="
+    console.log('typing');
+  ">
   <button onclick="
   calculateTotal();
   ">Calculate</button>
@@ -33,8 +35,6 @@
     function calculateTotal() {
       const inputElement = document.querySelector('.js-cost-input');
       let cost= Number(inputElement.value);
-      console.log(cost);
-      console.log(typeof cost);
 
       if (cost < 40) {
         cost = cost + 10;
