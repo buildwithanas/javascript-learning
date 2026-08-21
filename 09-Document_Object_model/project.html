@@ -22,7 +22,7 @@
   <p>Orders over $40 = FREE shipping.</p>
 
   <input type="text" placeholder="cost of order" class="js-cost-input" onkeydown="
-    console.log('typing');
+    console.log(event.key);
   ">
   <button onclick="
   calculateTotal();
