@@ -22,16 +22,27 @@
   <p>Orders over $40 = FREE shipping.</p>
 
   <input type="text" placeholder="cost of order" class="js-cost-input">
-  <button onclick="calculateTotal">Calculate</button>
+  <button onclick="
+  calculateTotal();
+  ">Calculate</button>
+  <p class="js-total-cost"></p>
 
 
   <script>
 
     function calculateTotal() {
       const inputElement = document.querySelector('.js-cost-input');
-      console.log(inputElement.value);
+      let cost= inputElement.value;
+      console.log(cost);
+
+      if (cost < 40) {
+        cost = cost + 10;
+      }
+
+      document.querySelector('.js-total-cost')
+        .innerHTML = `$${cost}`;
     }
-    
+
     function subscribe() {
       const buttonElement = document.querySelector('.js-subscribe-button');
 
