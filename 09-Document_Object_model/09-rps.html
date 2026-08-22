@@ -10,14 +10,32 @@
   <style>
     body {
       background-color: rgb(25, 25, 25);
+      color: white;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    .title {
+      font-size: 40px;
+      font-weight: bold;
+    }
+    .move-icon {
+      height: 50px;
+    }
+    .move-img {
+      background-color: transparent;
+      border: 2px solid white;
+      border-radius: 50px;
+      widt: 100px;
+      heifht: 100px;
       
     }
+  
+
   </style>
-  <p>Rock Paper Scissors
-  </p>
-  <button onclick="playGame('rock')">Rock</button>
-  <button onclick="playGame('paper')">paper</button>
-  <button onclick="playGame('scissors')">Scissors</button>
+  <p class="title">Rock Paper Scissors</p>
+  
+  <button onclick="playGame('rock')" class="move-img"> <img src="images/rock-emoji.png" class="move-icon"></button>
+  <button onclick="playGame('paper')" class="move-img"> <img src="images/paper-emoji.png" class="move-icon"> </button>
+  <button onclick="playGame('scissors')" class="move-img"> <img src="images/scissors-emoji.png" class="move-icon"></button>
 
   <p class="js-result"></p>
   <p class="js-moves"></p>
