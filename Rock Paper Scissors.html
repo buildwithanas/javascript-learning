@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<!-- saved from url=(0053)https://supersimple.dev/projects/rock-paper-scissors/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Rock Paper Scissors</title>
+    <style>
+      body {
+        background-color: rgb(25, 25, 25);
+        color: white;
+        font-family: Arial;
+      }
+
+      .title {
+        font-size: 30px;
+        font-weight: bold;
+      }
+
+      .move-icon {
+        height: 50px;
+      }
+
+      .move-button {
+        width: 120px;
+        height: 120px;
+        border-radius: 60px;
+        border: 3px solid white;
+
+        background-color: transparent;
+        margin-right: 10px;
+        cursor: pointer;
+      }
+
+      .result {
+        font-size: 25px;
+        font-weight: bold;
+        margin-top: 50px;
+      }
+
+      .score {
+        margin-top: 60px;
+      }
+
+      .reset-score-button {
+        background-color: white;
+        border: none;
+        font-size: 15px;
+        padding: 8px 15px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <p class="title">Rock Paper Scissors</p>
+
+    <button onclick="
+      makeMove(&#39;rock&#39;);
+    " class="move-button">
+      <img class="move-icon" src="./Rock Paper Scissors_files/rock-emoji.png">
+    </button>
+
+    <button onclick="
+      makeMove(&#39;paper&#39;);
+    " class="move-button">
+      <img class="move-icon" src="./Rock Paper Scissors_files/paper-emoji.png">
+    </button>
+
+    <button onclick="
+      makeMove(&#39;scissors&#39;);
+    " class="move-button">
+      <img class="move-icon" src="./Rock Paper Scissors_files/scissors-emoji.png">
+    </button>
+
+    <p class="result js-result"></p>
+    <p class="js-moves-chosen"></p>
+
+    <p class="score js-score">
+          Wins: 0, Losses: 0, Ties: 0
+        </p>
+    <button class="reset-score-button" onclick="
+      resetScore();
+    ">
+      Reset Score
+    </button>
+
+    <script>
+      let score = {
+        wins: 0,
+        losses: 0,
+        ties: 0
+      };
+
+      const savedScore = JSON.parse(localStorage.getItem('score'));
+      if (savedScore) {
+        score = savedScore;
+      }
+
+      updateScoreElement();
+
+      function makeMove(playerMove) {
+        const computerMove = pickComputerMove();
+        const resultElement = document.querySelector('.js-result');
+
+        if (playerMove === computerMove) {
+          resultElement.innerHTML = `Tie.`;
+          score.ties += 1;
+
+        } else if (
+          (playerMove === 'rock' && computerMove === 'scissors') ||
+          (playerMove === 'paper' && computerMove === 'rock') ||
+          (playerMove === 'scissors' && computerMove === 'paper')
+        ) {
+          resultElement.innerHTML = `You win.`;
+          score.wins += 1;
+
+        } else {
+          resultElement.innerHTML = `You lose.`;
+          score.losses += 1;
+        }
+
+        const movesElement = document.querySelector('.js-moves-chosen');
+        movesElement.innerHTML = `
+          You
+          <img src="images/${playerMove}-emoji.png" class="move-icon">
+          <img src="images/${computerMove}-emoji.png" class="move-icon">
+          Computer
+        `;
+
+        updateScoreElement();
+        localStorage.setItem('score', JSON.stringify(score));
+      }
+
+      function resetScore() {
+        score = {
+          wins: 0,
+          losses: 0,
+          ties: 0
+        };
+
+        updateScoreElement();
+        localStorage.removeItem('score');
+      }
+
+      function pickComputerMove() {
+        const randomNumber = Math.random();
+        let computerMove;
+
+        if (randomNumber < (1 / 3)) {
+          computerMove = 'rock';
+        } else if (randomNumber < (2 / 3)) {
+          computerMove = 'paper';
+        } else {
+          computerMove = 'scissors';
+        }
+
+        return computerMove;
+      }
+
+      function updateScoreElement() {
+        document.querySelector('.js-score').innerHTML = `
+          Wins: ${score.wins}, Losses: ${score.losses}, Ties: ${score.ties}
+        `;
+      }
+    </script>
+  
+
+</body></html>
