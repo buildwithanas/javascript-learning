@@ -1,4 +1,4 @@
-const todoList = ['writecode', 'make dinner'];
+const todoList = ['write textcode', 'make dinner'];
 
 let todoListHTML = '';
 
