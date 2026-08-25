@@ -2,9 +2,9 @@ const todoList = [{
   name: 'write textcode',
   dueDate: '2009-01-12'
 }, {
-  name: 'make dinner'
-  dueDate: ,
-];
+  name: 'make dinner',
+  dueDate: '2009-01-12'  
+}];
 
 renderTodoList();
 function renderTodoList() {
