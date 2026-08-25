@@ -1,4 +1,10 @@
-const todoList = ['write textcode', 'make dinner'];
+const todoList = [{
+  name: 'write textcode',
+  dueDate: '2009-01-12'
+}, {
+  name: 'make dinner'
+  dueDate: ,
+];
 
 renderTodoList();
 function renderTodoList() {
