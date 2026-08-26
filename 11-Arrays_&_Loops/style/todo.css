@@ -1,26 +1,62 @@
-.todo-text p{
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.todo-text p {
   font-size: 30px;
   font-weight: 500;
   color: rgb(14, 14, 92);
 }
+
 .js-name-input {
   width: 25%;
   height: 18px;
 }
-js-due-date-input {
+
+/* FIXED: Added the dot before class name */
+.js-due-date-input {
   width: 25%;
   height: 50%;
 }
+
 .btn {
   width: 70px;
   height: 30px;
   padding-left: 5px;
   padding-right: 5px;
   color: #ffffff;
-  background-color: #050e61;
+  background-color: green;
   border: 0;
   font-size: 15px;
   font-weight: 600;
   border-radius: 5px;
+  cursor: pointer;
+}
+
+.todo-grid,
+.todo-input-grid {
+  display: grid;
+  grid-template-columns: 200px 150px 100px;
+  column-gap: 10px;
+  row-gap: 10px;
+}
+
+.todo-input-grid {
+  margin-bottom: 10px;
+  row-gap: 30px;
+  column-gap: 20px;
+}
+
+.name-input,
+.due-date {
+  font-size: 15px;
+  padding: 6px;
+}
+
+.js-del {
+  background-color: rgba(165, 4, 12, 0.705);
+  color: white;
+  border: 0;
+  font-size: 15px;
   cursor: pointer;
 }
