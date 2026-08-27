@@ -17,10 +17,18 @@
     const [firstValue, secondValue] = [1, 2, 3];
 
 
-    for (let i = 1; 1 <= 10; i++) {
+    /*for (let i = 1; 1 <= 10; i++) {
       if (i === 3) {
-        continur
-;      }
+        continue;      }
+      console.log(i);
+      if (i === 8){
+        break;
+      }
+    }*/
+
+    for (let i = 1; 1 <= 10; i++) {
+      if (i % 3 === 0) {
+        continue;      }
       console.log(i);
       if (i === 8){
         break;
