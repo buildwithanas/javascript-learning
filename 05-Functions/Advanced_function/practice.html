@@ -13,7 +13,7 @@
     greeting();
 
     const object1 = {
-      name: Anas,
+      name: 'Anas',
       age: 17,
       introduce: function() {
         console.log('My name is Anas Amoo');
@@ -21,6 +21,13 @@
     }
     object1.introduce();
       
+
+    function runFunction(run) {
+      run();
+    }
+    runFunction(function() {
+      console.log('JavaScript is getting easier!')
+    });
 
   </script>
 </body>
