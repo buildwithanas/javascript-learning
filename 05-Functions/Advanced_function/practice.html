@@ -7,6 +7,8 @@
 </head>
 <body>
   <script>
+
+    
     function greeting() {
       console.log('Hello, Anas!');
     }
@@ -29,6 +31,36 @@
       console.log('JavaScript is getting easier!')
     });
 
+
+    //practice 1
+    setTimeout(function() {
+      console.log('Hello Anas');
+    }, 2000);
+    console.log('This comes first');
+
+    //practice 2
+    setTimeout(function() {
+      console.log('I waited');
+      console.log('JavaScript is fun');
+    }, 5000);
+    console.log('Done');
+
+
+    //practice 3
+    setInterval(function() {
+      console.log('Learning JavaScript...');
+    }, 2000);
+
+    //practice 4
+    setTimeout(function() {
+      console.log('3 seconds passed');
+    }, 3000);
+
+    setInterval(function() {
+      console.log('2 seconds passed');
+    }, 2000);
+    
+    
   </script>
 </body>
 </html>
