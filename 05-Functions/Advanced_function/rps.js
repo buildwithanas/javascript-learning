@@ -61,12 +61,12 @@ document.querySelector('.js-scissors-btn')
 
 
 
-document.body.addEventListener('event', () => {
+document.body.addEventListener('keydown', (event) => {
   if (event.key === 'r') {
     playGame('rock');
   } else if (event.key === 'p') {
     playGame('paper');
-  }else if (event.key === 's') {
+  } else if (event.key === 's') {
     playGame('scissors');
   }
 });
