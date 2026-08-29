@@ -60,6 +60,11 @@ document.querySelector('.js-scissors-btn')
   });    
 
 
+
+document.body.addEventListener('event', () => {
+  if ('event.key === 'r');
+});
+
     function playGame(playerMove) {
 
       const computerMove = pickComputerMove();
