@@ -44,9 +44,7 @@ let score = JSON.parse(localStorage.getItem('score')) || {
       } else {
         clearInterval(intervalId);
         isAutoPlaying = false;
-
       }
-      
     }
     function playGame(playerMove) {
 
