@@ -47,6 +47,10 @@ let score = JSON.parse(localStorage.getItem('score')) || {
     }
 
     const rockElement = document.querySelector('.js-rock-btn')
+      .addEventListener('click', () => {
+        playGame('rock');
+      });
+
     function playGame(playerMove) {
 
       const computerMove = pickComputerMove();
