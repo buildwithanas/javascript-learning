@@ -12,9 +12,14 @@
 
   <script>
     // FILTER AND MAP
-    [1, -3, 5].filter((value, index) => {
-      return;
-    });
+    console.log([1, -3, 5].filter((value, index) => {
+      if (value >= 0){
+        return true;
+      } else {
+        return false;
+      }
+      return true;
+    }));
 
   </script>
 </body>
