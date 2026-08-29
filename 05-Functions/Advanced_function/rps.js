@@ -40,12 +40,13 @@ let score = JSON.parse(localStorage.getItem('score')) || {
         playGame(playerMove);
       }, 1000);
       isAutoPlaying = true;
-
       } else {
         clearInterval(intervalId);
         isAutoPlaying = false;
       }
     }
+
+    const rockElement = document.querySelector('.js-rock-btn')
     function playGame(playerMove) {
 
       const computerMove = pickComputerMove();
