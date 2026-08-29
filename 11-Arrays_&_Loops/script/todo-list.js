@@ -31,7 +31,7 @@ function renderTodoList() {
   document.querySelector('.js-todo-list')
   .innerHTML = todoListHTML;
 }
-
+/*
 function addTodo() {
   const inputElement = document.querySelector('.js-name-input');
   const name = inputElement.value;
@@ -47,5 +47,22 @@ function addTodo() {
 });
 
   inputElement.value = '';
+  renderTodoList();
+}
+*/
+
+function addTodo() {
+  const inputElement = document.querySelector('.js-name-input');
+  const name = inputElement.value.trim();
+
+  const dateInputElement = document.querySelector('.js-due-date-input');
+  const dueDate = dateInputElement.value;
+
+  if (!name) return; // don't add empty todos
+
+  todoList.push({ name, dueDate });
+
+  inputElement.value = '';
+  dateInputElement.value = ''; // was missing
   renderTodoList();
 }
